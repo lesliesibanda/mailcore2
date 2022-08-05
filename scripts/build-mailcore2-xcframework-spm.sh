@@ -12,7 +12,7 @@ DATE="`date +"%Y-%m-%d"`"
 FRAMEWORK_NAME="MailCore2.xcframework"
 ARCHIVE_NAME="MailCore2-$DATE.xcframework.zip"
 MANIFEST_PATH="$MAILCORE_DIR/Package.swift"
-BASE_URL="https://downloads.maddux.cloud/mailcore2-apple-xcframework"
+BASE_URL="https://github.com/MailCore/mailcore2/raw/master/bin"
 FULL_URL="$BASE_URL/$ARCHIVE_NAME"
 SUCCESS_MESSAGE="
 -------------------
@@ -26,7 +26,7 @@ SPM Update Instructions:
 # Make sure xcframework export was successful
 if [[ -d "$BUILD_DIR/$FRAMEWORK_NAME" ]]; then
     cd $BUILD_DIR
-    
+
     # Clear previous archive
     rm "$BUILD_DIR/$ARCHIVE_NAME"
 
@@ -38,6 +38,6 @@ if [[ -d "$BUILD_DIR/$FRAMEWORK_NAME" ]]; then
     sed -i.bak "s~url: \"\(.*\)\"~url: \"$FULL_URL\"~g" $MANIFEST_PATH
     sed -i.bak "s~checksum: \"\(.*\)\"~checksum: \"$CHECKSUM\"~g" $MANIFEST_PATH
     rm $MANIFEST_PATH.bak
-    
+
     echo "$SUCCESS_MESSAGE"
 fi
